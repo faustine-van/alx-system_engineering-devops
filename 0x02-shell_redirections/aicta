@@ -1,6 +1,13 @@
-hello
-world
-just sit
-how are sudo?
-how are cat?
-how are dog?
+total 44
+drwxrwxr-x 2 vagrant vagrant 4096 Mar 13 11:24 .
+drwxrwxr-x 6 vagrant vagrant 4096 Mar 13 09:22 ..
+-rwxrw-r-- 1 vagrant vagrant   32 Mar 13 10:22 0-hello_world
+-rwxrw-r-- 1 vagrant vagrant   28 Mar 13 11:12 1-confused_smiley
+-rwxrw-r-- 1 vagrant vagrant   28 Mar 13 09:28 2-hellofile
+-rwxrw-r-- 1 vagrant vagrant   39 Mar 13 09:38 3-twofiles
+-rwxrw-r-- 1 vagrant vagrant   29 Mar 13 09:43 4-lastlines
+-rwxrw-r-- 1 vagrant vagrant   29 Mar 13 09:46 5-firstlines
+-rwxrw-r-- 1 vagrant vagrant   36 Mar 13 10:07 6-third_line
+-rw-rw-r-- 1 vagrant vagrant   36 Mar 13 11:24 8-cwd_state
+-rw-rw-r-- 1 vagrant vagrant   55 Mar 13 09:30 README.md
+-rw-rw-r-- 1 vagrant vagrant    0 Mar 13 11:24 aicta
