@@ -3,9 +3,8 @@
 # The content of the current directory
 # In a list format
 
-for item in *; do
-	if [ -f "$item" ] && [[ "$item" != .* ]] && [[ "$item" == *-* ]]; then
-		part="${item#*-}"
-		echo "$part"
-	fi
+lst=$(ls)
+
+for item in $lst; do
+	echo "$item" | cut -d'-' -f 2
 done
