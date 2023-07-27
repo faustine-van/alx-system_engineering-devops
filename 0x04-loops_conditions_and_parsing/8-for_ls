@@ -3,7 +3,9 @@
 # The content of the current directory
 # In a list format
 
-Lst="$(ls -1)"
-for item in $Lst; do
-	echo "$item"
+for item in *; do
+	if [ -f "$item" ] && [[ "$item" != .* ]] && [[ "$item" == *-* ]]; then
+		part="${item#*-}"
+		echo "$part"
+	fi
 done
