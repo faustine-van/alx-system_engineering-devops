@@ -31,3 +31,5 @@ then
 else
 	:
 fi
+
+exit $?
