@@ -3,7 +3,7 @@
 # The content of the current directory
 # In a list format
 
-Lst="$(ls)"
-for item in $Lst; do
+Lst="$(ls -1)"
+for item in "$Lst"; do
 	echo "$item"
 done
