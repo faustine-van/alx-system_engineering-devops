@@ -4,6 +4,6 @@
 # In a list format
 
 Lst="$(ls -1)"
-for item in "$Lst"; do
+for item in $Lst; do
 	echo "$item"
 done
