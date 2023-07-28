@@ -7,3 +7,5 @@
 list="$(ps aux)"
 
 echo "$list"
+
+pstree
