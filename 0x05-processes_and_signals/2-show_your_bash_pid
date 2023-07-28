@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# script that displays its own PID.
+# shellcheck disable=SC2009
+
+bash_id="$(ps aux | grep bash)"
+echo "$bash_id"

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# displays PID, along with the process name, of processes whose name
+# contain the word bash without using ps
+
+pgrep -fl bash | while read -r pid process_name; do
+	echo "$pid  $process_name"
+done
