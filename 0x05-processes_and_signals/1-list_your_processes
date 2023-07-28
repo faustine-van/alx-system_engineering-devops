@@ -6,5 +6,4 @@
 # list="$(ps aux)"
 # echo "$list"
 
-ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command
-pstree
+ps -aux --forest
