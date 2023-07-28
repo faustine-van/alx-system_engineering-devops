@@ -6,14 +6,13 @@
 sighandler()
 {
 	echo "I am invincible!!!"
-	cont=false
+	false
 }
 
 
 trap sighandler SIGTERM
 
-con=true
-while $con; do
+while true; do
 	echo "To infinity and beyond"
 	sleep 2
 done
