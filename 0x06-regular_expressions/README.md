@@ -29,3 +29,7 @@ sylvain@ubuntu$ ./example.rb 127.0.0.a
 [Use a regular expression against a problem: now you have 2 problems](
 https://blog.codinghorror.com/regular-expressions-now-you-have-two-problems/)
 [Learn Regular Expressions with simple, interactive exercises](https://regexone.com/)
+[PHP/Javascript/Python](https://regex101.com/)
+[http://www.regular-expressions.info/](http://www.regular-expressions.info/)
+[http://www.w3schools.com/jsref/jsref_obj_regexp.asp Play withregexp (or compose them):](
+http://www.w3schools.com/jsref/jsref_obj_regexp.asp Play with regexp (or compose them):)
