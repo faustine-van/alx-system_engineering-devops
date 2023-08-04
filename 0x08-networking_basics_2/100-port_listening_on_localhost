@@ -3,3 +3,5 @@
 
 
 nc -l -p 98
+# -l: Listen mode, used to create a server that listens for incoming connections.
+# -p: Specifies the source port number.
