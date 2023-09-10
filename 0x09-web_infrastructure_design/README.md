@@ -1,4 +1,4 @@
-# 0x09. Web infrastructure design
+![scale up](https://github.com/faustine-van/alx-system_engineering-devops/assets/125466059/5cb49697-277e-4f4f-9b25-b3c765b80c1b)# 0x09. Web infrastructure design
 Web infrastructure design refers to the process of planning, creating, and
 organizing the underlying technological framework that supports a website or
 web application.
@@ -6,9 +6,18 @@ It involves making strategic decisions about the components and architecture
 that will ensure the website's performance, scalability, security, and reliability.
 
 1.Task1: Simple web stack
+![simple web stack](https://github.com/faustine-van/alx-system_engineering-devops/assets/125466059/5082aa7b-d637-4631-951b-8c3cb68fe6ca)
+
 2.Task2: Distributed web infrastructure
+![Distributed web infrastructure](https://github.com/faustine-van/alx-system_engineering-devops/assets/125466059/3c662663-d970-42ff-a004-1279414400b6)
+
 3.Task3: Secured and monitored web infrastructure
+![web](https://github.com/faustine-van/alx-system_engineering-devops/assets/125466059/6f169014-f2a9-48d8-9b79-77f1f043b0fa)
+
 4.Task4: Scale up
+![scale up](https://github.com/faustine-van/alx-system_engineering-devops/assets/125466059/7713cc78-49c9-40ab-96bf-f3fd4feb3427)
+
+
 ## Resources
 Read or watch:
 
