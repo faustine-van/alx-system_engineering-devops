@@ -1,4 +1,4 @@
-![scale up](https://github.com/faustine-van/alx-system_engineering-devops/assets/125466059/5cb49697-277e-4f4f-9b25-b3c765b80c1b)# 0x09. Web infrastructure design
+# 0x09. Web infrastructure design
 Web infrastructure design refers to the process of planning, creating, and
 organizing the underlying technological framework that supports a website or
 web application.
