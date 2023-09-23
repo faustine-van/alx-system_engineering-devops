@@ -4,11 +4,11 @@
 # user="ubuntu"
 # ip_remote_server="18.234.105.144"
 
-private_key="~/.ssh/school"
+# private_key="~/.ssh/school"
 
 # Expand the tilde (~) in the private key path
 # private_key=$(eval echo "$private_key")
 
 # Use SSH with single-character flags to connect
 # ssh -i "$private_key" "$user@$ip_remote_server"
-ssh -i "$private_key" ubuntu@18.234.105.144
+ssh -i ~/.ssh/school ubuntu@18.234.105.144
