@@ -7,20 +7,23 @@ class shhConfig {
   }
 
   # Ensure SSH client uses the specified private key
-  file_line { 'IdentityFile':
-    path  => '/etc/ssh/ssh_config',
-    line  => '    IdentityFile ~/.ssh/school',
-    match => '^#?\s*IdentityFile\s.*$',
+  augeas { 'IdentityFile':
+    context => "/files/etc/ssh/ssh_config",
+    changes => ["set Host[.='*']/IdentityFile '~/.ssh/school'",],
+    # notify  => Service['ssh.service '],  # Restart SSH service for changes
   }
   # disable password authentication in ssh configuration
-  file_line { 'disable password':
-    path  => '/etc/ssh/ssh_config',
-    line  => '    PasswordAuthentication no',
-    match => '^#?\s*PasswordAuthentication\s.*$',
+  augeas { 'disable password':
+    context  => '/files/etc/ssh/ssh_config',
+    changes  => "set Host[.='*']/PasswordAuthentication no",
+    # notify  => Service['ssh.service '],  # Restart SSH service for changes
   }
   # notify any changes made
-  notify { 'notify change':
-    require => File['/etc/ssh/ssh_config'],
+  notify { 'SSH client configuarion updated':
+    require => [
+     File['/etc/ssh/ssh_config'],
+     Augeas['disable password'],
+     Augeas['disable password'],],
   }
 }
 include shhConfig
