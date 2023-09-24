@@ -1,4 +1,5 @@
-# Configure SSH client for key-based authentication and disable password authentication
+# - Configure SSH client for key-based authentication and disable password
+# authentication
 
 class shhConfig {
   $ssh_config_file = '/etc/ssh/ssh_config'
@@ -13,3 +14,5 @@ class shhConfig {
     content => $config_content,
   }
 }
+
+include shhConfig
