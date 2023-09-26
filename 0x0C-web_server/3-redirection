@@ -4,23 +4,14 @@
 # install nginx web server on the server
 
 # updated server
-sudo apt-get update
+sudo apt-get -y update
 
 # install ngnix web server
 sudo apt-get -y install ngnix
 
-# listen to port 80
-nc -l -p 80
-
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 
-sudo sed -i "40i\rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+sed -i "40i\rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
 
 # Test the Nginx configuration for syntax errors
-sudo nginx -t
-
-# If the test is successful, reload Nginx to apply the changes
-sudo systemctl reload nginx
-
-# sudo sed -i "s#location {#location /redirect_me {#g" /etc/nginx/sites-available/default
-# sudo sed -i "s#try_files \$uri \$uri/ =404;#return 301 http://newpage.com;#g" /etc/nginx/sites-available/default
+sudo service nginx reload
