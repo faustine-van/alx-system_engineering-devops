@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
 # Configure Nginx server so that /redirect_me is redirecting to another page.
 
-# updated server
 sudo apt-get update
 
-# install ngnix web server
 sudo apt-get -y install ngnix
-
-# install firewall
-sudo ufw allow 'Nginx HTTP'
 
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 
-sudo sed -i "37i\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+sudo sed -i "26i \\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
 
-# Test the Nginx configuration for syntax errors and restart
 sudo service nginx restart
