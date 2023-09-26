@@ -10,12 +10,6 @@ package { 'nginx':
   install_option => ['-y'],
 }
 
-Sercice { 'nginx':
-  ensure     => 'running',
-  enable     => true,
-  hasstatus  => true,
-  hasrestart => true,
-}
 exec { '/var/www/html/index.html':
   ensure  => 'present',
   content => 'Hello World!',
@@ -28,13 +22,8 @@ exec { '/etc/nginx/sites-available/default':
 server {
         listen 80 default_server;
         listen [::]:80 default_server;
-        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         root /var/www/html;
-        error_page 404 /page_404.html;
-        location = /page_404.html {
-                root /usr/share/nginx/html;
-                internal;
-        }
+        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 
         # Add index.php to the list if you are using PHP
         index index.html index.htm index.nginx-debian.html;
