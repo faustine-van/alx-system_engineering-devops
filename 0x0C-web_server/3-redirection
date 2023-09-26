@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
 # Configure Nginx server so that /redirect_me is redirecting to another page.
 
-sudo sed -i "s#location {#location /redirect_me {#g" /etc/nginx/sites-available/default
-sudo sed -i "s#try_files \$uri \$uri/ =404;#return 301 http://newpage.com;#g" /etc/nginx/sites-available/default
+# sudo sed -i "s#location {#location /redirect_me {#g" /etc/nginx/sites-available/default
+# sudo sed -i "s#try_files \$uri \$uri/ =404;#return 301 http://newpage.com;#g" /etc/nginx/sites-available/default
+
+echo "server {
+	listen 80;
+	listen [::]:80;
+	server_name techf.tech; # Replace with your domain name or server IP
+
+	location /redirect_me {
+		return 301 http://newpage.com;
+	}
+
+	# ... other server configuration ...
+# }" | sudo tee /etc/nginx/sites-available/redirect_me
+
+# Test the Nginx configuration for syntax errors
+sudo nginx -t
+
+# If the test is successful, reload Nginx to apply the changes
+sudo systemctl reload nginx
+
+# sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-available/sites-enabled/
