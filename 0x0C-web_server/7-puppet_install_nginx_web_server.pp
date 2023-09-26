@@ -5,8 +5,9 @@ exec { 'apt-get update':
 }
 
 package { 'nginx':
-  ensure  => 'installed',
-  require => Exec['apt-get update'],
+  ensure         => 'installed',
+  provider       => 'apt',
+  install_option => ['-y'],
 }
 
 Sercice { 'nginx':
@@ -15,22 +16,41 @@ Sercice { 'nginx':
   hasstatus  => true,
   hasrestart => true,
 }
-exec { 'list to port':
-  path    => 'usr/bin:/bin',
-  command => 'echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html',
-  require => Package['nginx'],
+exec { '/var/www/html/index.html':
+  ensure  => 'present',
+  content => 'Hello World!',
 }
 
-$string = "\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+exec { '/etc/nginx/sites-available/default':
+  ensure  => 'present',
+  content =>
+'
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+        root /var/www/html;
+        error_page 404 /page_404.html;
+        location = /page_404.html {
+                root /usr/share/nginx/html;
+                internal;
+        }
 
-exec { '/redirect_me is redirecting to another page':
-  path    => 'usr/bin:/bin',
-  command => 'sudo sed -i "40i $string" /etc/nginx/sites-available/default',
-  require => Exec['list to port'],
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+}
+',
 }
 
-exec { 'append to the default file':
+exec { 'restart':
   path    => 'usr/bin:/bin',
   command => 'sudo service nginx restart',
-  require => Exec['/redirect_me is redirecting to another page'],
 }
