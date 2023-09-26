@@ -2,10 +2,10 @@
 # install nginx web server on the server
 
 # updated server
-sudo -y apt-get update
+sudo apt-get update
 
 # install ngnix web server
-sudo apt-get install ngnix
+sudo apt-get -y install nginx
 
 # listen to port 80
 nc -l -p 80
