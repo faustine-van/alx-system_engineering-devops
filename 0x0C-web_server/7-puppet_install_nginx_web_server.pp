@@ -10,3 +10,9 @@ package { 'nginx':
   install_options => ['-y'],
   require         => Exec['apt-get update'],
 }
+
+
+file { '/var/www/html/index1.html':
+  ensure  => 'file',
+  content => 'Hello World!',
+}
