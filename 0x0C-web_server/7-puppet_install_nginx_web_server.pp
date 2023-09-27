@@ -16,25 +16,13 @@ file { '/var/www/html/index1.html':
   ensure  => 'file',
   content => 'Hello World!',
 }
-file { '/etc/nginx/sites-available/default':
-  ensure  => 'file',
-  content => '
-server {
-    listen 80;
-    server_name localhost;
 
-    location / {
-      root /var/www/html;
-      index index.html;
-    }
+exec { 'configure redirect_me':
+  path     => ['usr/bin','/bin]',
+  command  => 'sudo sed -i "40i \\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /home/vagrant/default',
+  provider => shell,
 
-    location /redirect_me {
-      rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-    }
 }
-',
-}
-
 exec { 'restart':
   path    => 'usr/bin:/bin',
   command => 'sudo service nginx restart',
