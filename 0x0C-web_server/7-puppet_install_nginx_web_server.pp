@@ -5,14 +5,15 @@ exec { 'apt-get update':
 }
 
 package { 'nginx':
-  ensure          => 'installed',
-  provider        => 'apt',
-  install_options => ['-y'],
-  require         => Exec['apt-get update'],
+  ensure    => 'installed',
+  require   => Exec['apt-get update'],
 }
 
-
-file { '/var/www/html/index1.html':
-  ensure  => 'file',
+file { '/var/www/html/index.html':
   content => 'Hello World!',
+}
+
+exec { 'restart':
+  path    => 'usr/bin:/bin',
+  command => 'sudo service nginx restart',
 }
