@@ -13,6 +13,10 @@ file { '/var/www/html/index.html':
   content => 'Hello World!',
 }
 
+exec {
+  command => 'sed -i "25i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+  provider => 'shell',
+}
 exec { 'restart':
   path    => 'usr/bin:/bin',
   command => 'sudo service nginx restart',
