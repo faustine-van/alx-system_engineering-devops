@@ -5,19 +5,19 @@ exec { 'apt-get update':
 }
 
 package { 'nginx':
-  ensure    => 'installed',
-  require   => Exec['apt-get update'],
+  ensure  => 'installed',
+  require => Exec['apt-get update'],
 }
 
 file { '/var/www/html/index.html':
   content => 'Hello World!',
 }
 
-exec {
-  command => 'sed -i "25i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+exec { 'direct_me':
+  command  => 'sed -i "25i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
   provider => 'shell',
 }
-exec { 'restart':
-  path    => 'usr/bin:/bin',
-  command => 'sudo service nginx restart',
+service { 'nginx':
+  ensure  => 'running',
+  require => Exec['nginx'],
 }
