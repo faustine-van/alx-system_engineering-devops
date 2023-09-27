@@ -10,6 +10,11 @@ package { 'nginx':
   install_option => ['-y'],
 }
 
+exec { 'nginx':
+  path => ['/usr/bin', '/bin']
+  command => 'nc -l -p 80',
+}
+
 exec { '/var/www/html/index.html':
   ensure  => 'present',
   content => 'Hello World!',
