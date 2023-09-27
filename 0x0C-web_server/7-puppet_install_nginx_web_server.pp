@@ -1,30 +1,31 @@
 # Install Nginx web server and configure puppet
 
 exec { 'apt-get update':
-  command => '/usr/bin/apt-get update'
+  path => ['/usr/bin', '/bin'],
+  command => 'apt-get update',
 }
 
 package { 'nginx':
   ensure         => 'installed',
   provider       => 'apt',
-  install_option => ['-y'],
+  install_options => ['-y'],
 }
 
-exec { 'nginx':
-  path => ['/usr/bin', '/bin']
-  command => 'nc -l -p 80',
+service { 'nginx':
+  ensure => 'running',
+  hasrestart => true,
+  hasstatus  => true,
+  enable=> true,
 }
 
-exec { '/var/www/html/index.html':
-  ensure  => 'present',
+file { '/var/www/html/index1.html':
+  ensure  => 'file',
   content => 'Hello World!',
 }
 
-exec { '/etc/nginx/sites-available/default':
+file { '/etc/nginx/sites-available/default':
   ensure  => 'present',
-  content =>
-'
-server {
+  content => 'server {
         listen 80 default_server;
         listen [::]:80 default_server;
         root /var/www/html;
@@ -43,6 +44,7 @@ server {
 }
 ',
 }
+
 
 exec { 'restart':
   path    => 'usr/bin:/bin',
