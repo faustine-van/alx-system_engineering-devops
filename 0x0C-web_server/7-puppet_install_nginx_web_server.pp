@@ -16,7 +16,7 @@ file { '/var/www/html/index1.html':
   ensure  => 'file',
   content => 'Hello World!',
 }
-file { '/var/www/html/index1.html':
+file { '/etc/nginx/sites-available/default':
   ensure  => 'file',
   content => 'server {
     listen 80;
