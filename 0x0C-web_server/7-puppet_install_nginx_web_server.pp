@@ -23,7 +23,3 @@ exec { 'configure redirect_me':
   provider => 'shell',
 
 }
-exec { 'restart':
-  path    => 'usr/bin:/bin',
-  command => 'sudo service nginx restart',
-}
