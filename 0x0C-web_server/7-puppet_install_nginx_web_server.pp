@@ -1,21 +1,21 @@
 # Install Nginx web server and configure puppet
 
 exec { 'apt-get update':
-  path => ['/usr/bin', '/bin'],
+  path    => ['/usr/bin', '/bin'],
   command => 'apt-get update',
 }
 
 package { 'nginx':
-  ensure         => 'installed',
-  provider       => 'apt',
+  ensure          => 'installed',
+  provider        => 'apt',
   install_options => ['-y'],
 }
 
 service { 'nginx':
-  ensure => 'running',
+  ensure     => 'running',
   hasrestart => true,
   hasstatus  => true,
-  enable=> true,
+  enable     => true,
 }
 
 file { '/var/www/html/index1.html':
