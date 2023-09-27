@@ -11,12 +11,6 @@ package { 'nginx':
   install_options => ['-y'],
 }
 
-service { 'nginx':
-  ensure     => 'running',
-  hasrestart => true,
-  hasstatus  => true,
-  enable     => true,
-}
 
 file { '/var/www/html/index1.html':
   ensure  => 'file',
@@ -25,7 +19,8 @@ file { '/var/www/html/index1.html':
 
 file { '/etc/nginx/sites-available/default':
   ensure  => 'present',
-  content => 'server {
+  content => '
+server {
         listen 80 default_server;
         listen [::]:80 default_server;
         root /var/www/html;
@@ -44,7 +39,6 @@ file { '/etc/nginx/sites-available/default':
 }
 ',
 }
-
 
 exec { 'restart':
   path    => 'usr/bin:/bin',
