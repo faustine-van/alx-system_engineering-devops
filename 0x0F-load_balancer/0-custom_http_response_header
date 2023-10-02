@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains the name of the custom HTTP
 
-# updated server
 sudo apt-get update
 
 # install ngnix web server
