@@ -2,6 +2,5 @@
 # Configure Nginx so that its HTTP response contains the name of the custom HTTP
 
 sudo sed -i "/server_name _;/a\\\tadd_header X-Served-By \$hostname;" /etc/nginx/sites-available/default
-
 # restart after configuration
 sudo service nginx restart
