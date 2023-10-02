@@ -15,6 +15,6 @@ sudo sed -i "41i $string1" /etc/nginx/sites-available/default
 # sudo sed -i "/server_name _;/a\\\tadd_header X-Served-By $\hostname;" /etc/nginx/sites-available/default
 str="\\\tadd_header X-Served-By \$hostname;"
 sudo sed -i "42i $str" /etc/nginx/sites-available/default
-# restart after configuration
 
+# restart after configuration
 sudo service nginx restart
