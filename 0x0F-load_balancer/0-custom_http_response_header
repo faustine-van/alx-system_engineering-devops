@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains the name of the custom HTTP
 
-
 sudo apt-get update
 sudo apt-get -y install nginx
 
@@ -14,7 +13,7 @@ string1="\\\terror_page 404 /page_404.html;\n\tlocation = /page_404.html {\n\t\t
 sudo sed -i "41i $string1" /etc/nginx/sites-available/default
 
 # sudo sed -i "/server_name _;/a\\\tadd_header X-Served-By $\hostname;" /etc/nginx/sites-available/default
-str="\\\tadd_header X-Served-By $\hostname;"
+str="\\\tadd_header X-Served-By \$hostname;"
 sudo sed -i "42i $str" /etc/nginx/sites-available/default
 # restart after configuration
 
