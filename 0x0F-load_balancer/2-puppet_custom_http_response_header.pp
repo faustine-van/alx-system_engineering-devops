@@ -22,8 +22,9 @@ file { '/etc/nginx/sites-available/default':
   ensure  => 'file',
   content => "Ceci n'est pas une page",
 }
+$str     => 'error_page 404 /page_404.html;\n\tlocation = /page_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"'
 exec { 'configre 404-page':
-  command  => 'sed -i "41i	error_page 404 /page_404.html;\n\tlocation = /page_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default',
+  command  => 'sed -i "41i	$str /etc/nginx/sites-available/default',
   provider => 'shell',
 }
 exec { 'X-Served-By':
