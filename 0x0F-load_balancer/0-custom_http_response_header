@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains the name of the custom HTTP
 
+# updated server
+sudo apt-get update
+
+# install ngnix web server
+sudo apt-get -y install nginx
+
+# create page
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+# page for redirect page
+string="\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+sudo sed -i "40i $string" /etc/nginx/sites-available/default
+
+# create page 404
+sudo echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/page_404.html
+string1="\\\terror_page 404 /page_404.html;\n\tlocation = /page_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
+sudo sed -i "41i $string1" /etc/nginx/sites-available/default
+
+# add http header
 sudo sed -i "/server_name _;/a\\\tadd_header X-Served-By \$hostname;" /etc/nginx/sites-available/default
+
+# restart after configuration
 sudo service nginx restart
