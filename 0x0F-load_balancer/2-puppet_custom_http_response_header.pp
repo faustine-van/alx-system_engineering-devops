@@ -1,3 +1,5 @@
+# automate the task of creating a custom HTTP header response, but with Puppet.
+
 exec { 'update':
   command => '/usr/bin/apt-get update',
 }
@@ -16,12 +18,12 @@ exec {'redirect_me':
   provider => 'shell',
 }
 
-exec { 'custom HTTP header response':
-  command  => 'sudo sed -i "/server_name _;/a\\\tadd_header X-Served-By $\hostname;" /etc/nginx/sites-available/default',
+exec { 'X-Served-By':
+  command  => 'sed -i "42i	add_header X-Served-By $\hostname;" /etc/nginx/sites-available/default',
   provider => 'shell',
 }
 
 service { 'nginx':
-  ensure  => 'running',
+  ensure  => running,
   require => Package['nginx'],
 }
