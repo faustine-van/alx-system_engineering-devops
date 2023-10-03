@@ -5,12 +5,13 @@
 # Make sure that HAproxy can be managed via an init script
 
 sudo echo "frontend my-website
-        bind :80
+        bind *:80
         default_backend all_servers
 
 backend all_servers
         balance roundrobin
-        server 316762-web-01 18.234.105.144
-        server 316762-web-02  54.165.39.106
+        server 316762-web-01 18.234.105.144:80 check
+        server 316762-web-02  54.165.39.106:80 check
+
 " | sudo tee /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
