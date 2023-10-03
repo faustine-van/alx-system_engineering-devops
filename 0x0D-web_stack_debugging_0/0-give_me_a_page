@@ -2,5 +2,6 @@
 # you will need to get Apache to run on the container and to return a
 # page containing Hello Holberton when querying the root of it.
 # using Docker
-sudo apt install -y apache2
+sudo apt get update
+sudo apt install apache2 -y
 sudo service apache2 start
