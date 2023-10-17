@@ -6,6 +6,7 @@
 [MySQL primary replica setup](https://www.digitalocean.com/community/tutorials/how-to-set-up-replication-in-mysql)
 [Build a robust database backup strategy](https://www.databasejournal.com/ms-sql/developing-a-sql-server-backup-strategy/)
 [How to Install MySQL 5.7 on Ubuntu 20.04](https://www.vultr.com/docs/how-to-install-mysql-5-7-on-ubuntu-20-04/)
+[MySQL backup with MySQL dump](https://www.ionos.com/digitalguide/server/security/mysql-backup/)
 
 
 ### man or help:
