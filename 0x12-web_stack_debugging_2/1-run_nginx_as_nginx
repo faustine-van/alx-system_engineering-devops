@@ -5,7 +5,7 @@
 # nginx must be listening on all active IPs on port 8080
 # You cannot use apt-get remove
 
-sudo pkill -9 apache2 
+sudo pkill -9 apache2
 #configure /etc/nginx/nginx.conf add user nginx;
 sudo echo "# user www-data;
 worker_processes 4;
@@ -49,7 +49,7 @@ http {
         ##
 
         gzip on;
-        gzip_disable "msie6";
+        gzip_disable \"msie6\";
 
         # gzip_vary on;
         # gzip_proxied any;
@@ -89,8 +89,8 @@ http {
 #       # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
 #
 #       # auth_http localhost/auth.php;
-#       # pop3_capabilities "TOP" "USER";
-#       # imap_capabilities "IMAP4rev1" "UIDPLUS";
+#       # pop3_capabilities \"TOP\" \"USER\";
+#       # imap_capabilities \"IMAP4rev1\" \"UIDPLUS\";
 #
 #       server {
 #               listen     localhost:110;
