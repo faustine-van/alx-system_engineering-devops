@@ -3,6 +3,4 @@
 if [ "$#" -eq 0 ]; then
     exit 1
 fi
-if id "$1" &>/dev/null; then
-    su - "$1" -c 'whoami'
-fi
+sudo -u "$1" 'whoami'
