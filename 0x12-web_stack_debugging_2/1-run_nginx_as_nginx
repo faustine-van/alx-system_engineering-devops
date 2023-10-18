@@ -6,6 +6,8 @@
 # You cannot use apt-get remove
 
 sudo pkill -9 apache2 
+sudo chown nginx:nginx  /var/run/nginx.pid
+sudo chown nginx:nginx  /var/log/nginx
 #configure /etc/nginx/nginx.conf add user nginx;
 sudo echo "# user www-data;
 worker_processes 4;
