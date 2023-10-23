@@ -26,5 +26,5 @@ if __name__ == '__main__':
             user_id = record.get('userId')
             completed = record.get('completed')
             title = record.get('title')
-            line = f'"{user_id}", "{name}", "{completed}", "{title}"'
+            line = f'"{user_id}","{name}","{completed}","{title}"'
             file.write(line + '\n')
