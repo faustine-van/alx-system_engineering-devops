@@ -4,15 +4,14 @@ import json
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], after=None):
     """ list containing the titles of all hot article
         for given subreddits
     """
-    after = None
 
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'
     if after:
-        url += f'&after{after}'
+        url += f'?after={after}'
     data = requests.get(url, headers=({'User-agent': 'app'}))
     if data.status_code == 200:
         info = data.json()
