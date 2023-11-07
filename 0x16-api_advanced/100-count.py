@@ -30,9 +30,10 @@ def count_words(subreddit, word_list):
         if 'data' in data and 'after' in info['data']:
             after = info['data']['after']
             count_words(subreddit, word_list)
-
-        sorted_count_dict = sorted(count_dict.items(), key=lambda x: [1])
-        for key, value in sorted_count_dict:
-            print(f'{key}: {value}')
+        else:
+            sorted_count_dict = sorted(count_dict.items(), key=lambda x: [0])
+            for word, count in sorted_count_dict:
+                if count > 0:
+                    print(f'{word}: {count}')
     else:
         return (None)
