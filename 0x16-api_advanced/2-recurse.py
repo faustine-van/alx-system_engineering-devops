@@ -19,7 +19,7 @@ def recurse(subreddit, hot_list=[], after=None):
             hot_list.append(post['data']['title'])
 
         if 'data' in data and 'after' in info['data']:
-            after = info['dat']['after']
+            after = info['data']['after']
             return recurse(subreddit, hot_list)
         else:
             return (hot_list)
