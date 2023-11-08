@@ -33,7 +33,6 @@ def count_words(subreddit, word_list):
         else:
             sorted_count_dict = sorted(count_dict.items(), key=lambda x: [0])
             for word, count in sorted_count_dict:
-                if count > 0:
-                    print(f'{word}: {count}')
+                print(f'{word}: {count}')
     else:
         return (None)
