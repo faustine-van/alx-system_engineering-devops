@@ -19,7 +19,6 @@ def count_words(subreddit, word_list):
     data = requests.get(url, headers=({'User-agent': 'app'}))
     if data.status_code == 200:
         info = data.json()
-        count = 0
         for post in info['data']['children']:
             title_words = post['data']['title'].split()
             for word in word_list:
@@ -29,10 +28,9 @@ def count_words(subreddit, word_list):
                     count_dict[word] = count_dict.get(word, 0) + count
         if 'data' in data and 'after' in info['data']:
             after = info['data']['after']
-            count_words(subreddit, word_list) 
-        else:
-            sorted_count_dict = sorted(count_dict.items(), key=lambda x: [0])
-            for word, count in sorted_count_dict:
-                print(f'{word}: {count}')
+            count_words(subreddit, word_list)
+        sorted_count_dict = sorted(count_dict.items(), key=lambda x: [1])
+        for word, count in sorted_count_dict:
+            print(f'{word}: {count}')
     else:
-        return (None)
+        return None
