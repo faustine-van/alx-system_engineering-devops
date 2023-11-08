@@ -14,7 +14,7 @@ def count_words(subreddit, word_list):
 
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'
     if after:
-        url += f'&after{after}'
+        url += f'?after={after}'
     count_dict = {}
     data = requests.get(url, headers=({'User-agent': 'app'}))
     if data.status_code == 200:
@@ -23,7 +23,7 @@ def count_words(subreddit, word_list):
         for post in info['data']['children']:
             title_words = post['data']['title'].split()
             for word in word_list:
-                 #  word.lower()
+                word.lower()
                 if word in title_words:
                     count = title_words.count(word)
                     count_dict[word] = count_dict.get(word, 0) + count
