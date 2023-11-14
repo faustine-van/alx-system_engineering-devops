@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# change datadog-agent to listen to 5005 and 5006
+sudo sed -i 's/# expvar_port: 5000/expvar_port: 5005/g' /etc/datadog-agent/datadog.yaml
+sudo sed -i 's/# cmd_port: 5001/cmd_port: 5006/g' /etc/datadog-agent/datadog.yaml
+sudo service datadog-agent restart
