@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # script that reload Gunicorn in a graceful way
 
-pids=$(pgrep -f 'gunicorn')
+masterPid=$(ps -C gunicorn fch -o pid head -n 1)
 
 if [  -n "$pids" ]; then
-    sudo kill -HUP "$pids"
+    sudo kill -HUP "$masterPid"
 fi
