@@ -4,7 +4,5 @@
 pids=$(pgrep -f 'gunicorn')
 
 if [  -n "$pids" ]; then
-  for pid in $pids; do    
-    sudo kill -HUP "$pid"
-  done
+    sudo kill -HUP "$pids"
 fi
