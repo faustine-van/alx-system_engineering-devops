@@ -3,6 +3,6 @@
 
 masterPid=$(ps -C gunicorn fch -o pid head -n 1)
 
-if [  -n "$pids" ]; then
+if [  -n "$masterPid" ]; then
     sudo kill -HUP "$masterPid"
 fi
