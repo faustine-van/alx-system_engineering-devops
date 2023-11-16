@@ -7,3 +7,4 @@ if [  -n "$pids" ]; then
   for pid in $pids; do    
     sudo kill -HUP "$pid"
   done
+fi
